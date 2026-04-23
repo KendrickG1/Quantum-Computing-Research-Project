@@ -83,10 +83,33 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+        audio::-webkit-media-controls-panel {
+            background-color: rgba(30, 41, 59, 0.9);
+        }
     </style>
 </head>
 <body class="selection:bg-blue-500/30">
@@ -107,8 +130,8 @@
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
                 <a href="#fundamentals" class="hover:text-white transition-colors">Fundamentals</a>
-                <a href="#reading-room" class="hover:text-white transition-colors">Verified Lab</a>
-                <a href="#contributions" class="hover:text-white transition-colors">Contributions</a>
+                <a href="#media" class="hover:text-white transition-colors">Media</a>
+                <a href="#reading-room" class="hover:text-white transition-colors">Reading Room</a>
                 <a href="#sources" class="hover:text-white transition-colors flex items-center gap-1.5">
                     <i data-lucide="library" class="w-4 h-4"></i> Sources
                 </a>
@@ -142,7 +165,7 @@
 
     <main class="max-w-7xl mx-auto px-6 pb-24">
         
-        <!-- Core Concept Grid (Fundamentals) -->
+        <!-- Fundamentals -->
         <section id="fundamentals" class="grid md:grid-cols-2 gap-8 mb-32 scroll-mt-32">
             <div class="glass-card p-10 rounded-[2.5rem] relative overflow-hidden group">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl group-hover:bg-blue-500/20 transition-all"></div>
@@ -151,11 +174,11 @@
                 </div>
                 <h3 class="text-2xl font-extrabold mb-4">Quantum Science</h3>
                 <p class="text-slate-400 leading-relaxed mb-6">The theoretical foundation focusing on the behavior of matter and energy at the atomic scale.</p>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-sm text-slate-300">
+                <div class="space-y-3 text-sm text-slate-300">
+                    <div class="flex items-center gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Superposition & Entanglement
                     </div>
-                    <div class="flex items-center gap-3 text-sm text-slate-300">
+                    <div class="flex items-center gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Atomic rule-breaking
                     </div>
                 </div>
@@ -168,87 +191,87 @@
                 </div>
                 <h3 class="text-2xl font-extrabold mb-4">Quantum Computing</h3>
                 <p class="text-slate-400 leading-relaxed mb-6">The engineering discipline of building systems that leverage quantum mechanics for data processing.</p>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-sm text-slate-300">
+                <div class="space-y-3 text-sm text-slate-300">
+                    <div class="flex items-center gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Qubit scalability
                     </div>
-                    <div class="flex items-center gap-3 text-sm text-slate-300">
+                    <div class="flex items-center gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Exponential algorithms
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Dynamic Reading Room (Verified Lab) -->
+        <!-- Media Hub -->
+        <section id="media" class="mb-32 scroll-mt-32">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-12 h-12 bg-pink-500/20 rounded-2xl flex items-center justify-center border border-pink-500/30">
+                    <i data-lucide="clapperboard" class="text-pink-400"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-extrabold tracking-tight">Interactive Media</h2>
+                    <p class="text-slate-400">Educational videos and podcast discussions.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Video Player -->
+                <div class="lg:col-span-2 glass-panel p-6 rounded-[2.5rem]">
+                    <div class="video-container mb-6">
+                        <!-- EMBED LOCAL VIDEO: Replace 'your-video-file.mp4' with actual path -->
+                        <video controls poster="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000">
+                            <source src="your-video-file.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="px-2">
+                        <h4 class="text-xl font-bold mb-2">Visualizing the Qubit</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">A visual demonstration of how quantum gates manipulate states in a Bloch sphere.</p>
+                    </div>
+                </div>
+
+                <!-- Podcast Player -->
+                <div class="glass-card p-8 rounded-[2.5rem] flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-8 border border-blue-500/20">
+                            <i data-lucide="mic" class="text-blue-400 w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2">The Quantum Dialogue</h4>
+                        <p class="text-xs text-blue-400 font-bold uppercase tracking-widest mb-6">Episode 1: Science & Development</p>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-8">
+                            An educational conversation covering the bridge between theoretical science and practical quantum manufacturing.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between text-[10px] text-slate-500 uppercase tracking-widest font-bold">
+                            <span>Audio Format</span>
+                            <span>Educational Session</span>
+                        </div>
+                        <!-- EMBED LOCAL AUDIO: Replace 'your-podcast-file.mp3' with actual path -->
+                        <audio controls class="w-full mt-4 h-10 opacity-80">
+                            <source src="your-podcast-file.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reading Room -->
         <section id="reading-room" class="mb-32 scroll-mt-32">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
                 <div>
-                    <h2 class="text-3xl font-extrabold tracking-tight mb-2">Reading Room</h2>
+                    <h2 class="text-3xl font-extrabold tracking-tight mb-2 text-gradient">Reading Room</h2>
                     <p class="text-slate-400">Curated research for the deep-tech enthusiast.</p>
                 </div>
-                <div class="flex gap-2">
-                    <span class="px-4 py-1.5 rounded-full glass-panel text-[10px] font-bold uppercase tracking-widest text-slate-400">Filter: ALL SOURCES</span>
-                </div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="article-grid">
-                <!-- Articles injected by JS -->
+                <!-- Articles injected via JS -->
             </div>
         </section>
 
-        <!-- The Contributions -->
-        <section id="contributions" class="mb-32 scroll-mt-32">
-            <div class="glass-panel rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
-                
-                <div class="relative z-10 text-center mb-16">
-                    <h2 class="text-4xl font-black mb-4">Strategic Contributions</h2>
-                    <p class="text-slate-400">Leading entities shaping the 2026 landscape.</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
-                    <!-- IBM -->
-                    <div class="group">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20">
-                                <i data-lucide="cpu" class="text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold">IBM Quantum</h4>
-                                <p class="text-xs text-blue-400 font-bold uppercase tracking-widest">Industry Application</p>
-                            </div>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Reaching the landmark of "Quantum Utility," IBM's 127-qubit Eagle processor is now solving complex physics problems that exceed classical simulation capabilities.
-                        </p>
-                        <a href="https://www.ibm.com/quantum" target="_blank" class="inline-flex items-center gap-2 text-white font-bold text-xs group-hover:text-blue-400 transition-colors">
-                            VIEW FULL ROADMAP <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Auburn -->
-                    <div class="group">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center shadow-lg shadow-orange-600/20">
-                                <i data-lucide="beaker" class="text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold">Auburn Physics</h4>
-                                <p class="text-xs text-orange-400 font-bold uppercase tracking-widest">Material Science</p>
-                            </div>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Pioneering "Surface Immobilized Electrides," Auburn is developing materials where electrons act as anions, providing a new path to error-protected qubits.
-                        </p>
-                        <a href="https://www.auburn.edu/cosam/departments/physics/index.htm" target="_blank" class="inline-flex items-center gap-2 text-white font-bold text-xs group-hover:text-orange-400 transition-colors">
-                            RESEARCH DIRECTORY <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- New Sources Section -->
+        <!-- Global Knowledge Hub -->
         <section id="sources" class="mb-32 scroll-mt-32">
             <div class="flex items-center gap-4 mb-12">
                 <div class="w-12 h-12 bg-emerald-500/20 rounded-2xl flex items-center justify-center border border-emerald-500/30">
@@ -256,77 +279,49 @@
                 </div>
                 <div>
                     <h2 class="text-3xl font-extrabold tracking-tight">Global Knowledge Hub</h2>
-                    <p class="text-slate-400">Verified links to hardware, statistics, and science papers.</p>
+                    <p class="text-slate-400">Verified links to hardware and science papers.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Research & Science -->
-                <div class="glass-card p-8 rounded-[2rem] flex flex-col">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-[2rem]">
                     <h4 class="text-sm font-black uppercase tracking-widest text-emerald-400 mb-6 flex items-center gap-2">
-                        <i data-lucide="microscope" class="w-4 h-4"></i> Science & Research
+                        <i data-lucide="microscope" class="w-4 h-4"></i> Science
                     </h4>
-                    <ul class="space-y-4 flex-1">
-                        <li>
-                            <a href="https://quantiki.org/" target="_blank" class="group block">
-                                <span class="text-white font-bold block group-hover:text-emerald-400 transition-colors">Quantiki</span>
-                                <span class="text-xs text-slate-500">The world's leading wiki for quantum information science.</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://arxiv.org/list/quant-ph/recent" target="_blank" class="group block">
-                                <span class="text-white font-bold block group-hover:text-emerald-400 transition-colors">arXiv: Quantum Physics</span>
-                                <span class="text-xs text-slate-500">Latest pre-prints and deep-science research papers.</span>
-                            </a>
-                        </li>
+                    <ul class="space-y-4">
+                        <li><a href="https://quantiki.org/" target="_blank" class="text-white hover:text-emerald-400 transition-colors block font-bold">Quantiki Wiki</a></li>
+                        <li><a href="https://arxiv.org/" target="_blank" class="text-white hover:text-emerald-400 transition-colors block font-bold">arXiv Library</a></li>
                     </ul>
                 </div>
-
-                <!-- Hardware & Manufacturing -->
-                <div class="glass-card p-8 rounded-[2rem] flex flex-col">
+                <div class="glass-card p-8 rounded-[2rem]">
                     <h4 class="text-sm font-black uppercase tracking-widest text-blue-400 mb-6 flex items-center gap-2">
-                        <i data-lucide="settings" class="w-4 h-4"></i> Hardware & Mfg.
+                        <i data-lucide="settings" class="w-4 h-4"></i> Hardware
                     </h4>
-                    <ul class="space-y-4 flex-1">
-                        <li>
-                            <a href="https://www.intel.com/content/www/us/en/research/quantum-computing.html" target="_blank" class="group block">
-                                <span class="text-white font-bold block group-hover:text-blue-400 transition-colors">Intel Quantum SDK</span>
-                                <span class="text-xs text-slate-500">Hardware-level developer tools and silicon spin qubit research.</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.rigetti.com/" target="_blank" class="group block">
-                                <span class="text-white font-bold block group-hover:text-blue-400 transition-colors">Rigetti Computing</span>
-                                <span class="text-xs text-slate-500">Full-stack quantum computing and superconducting chip mfg.</span>
-                            </a>
-                        </li>
+                    <ul class="space-y-4">
+                        <li><a href="https://www.intel.com/content/www/us/en/research/quantum-computing.html" target="_blank" class="text-white hover:text-blue-400 transition-colors block font-bold">Intel Quantum</a></li>
                     </ul>
                 </div>
-
-                <!-- Statistics & Development -->
-                <div class="glass-card p-8 rounded-[2rem] flex flex-col">
+                <div class="glass-card p-8 rounded-[2rem]">
                     <h4 class="text-sm font-black uppercase tracking-widest text-purple-400 mb-6 flex items-center gap-2">
-                        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Stats & Dev
+                        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Standards
                     </h4>
-                    <ul class="space-y-4 flex-1">
-                        <li>
-                            <a href="https://qir-alliance.org/" target="_blank" class="group block">
-                                <span class="text-white font-bold block group-hover:text-purple-400 transition-colors">QIR Alliance</span>
-                                <span class="text-xs text-slate-500">The standard for quantum intermediate representation and dev stats.</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://quantum-computing.ibm.com/composer/docs/iqx/guide/shaping/" target="_blank" class="group block">
-                                <span class="text-white font-bold block group-hover:text-purple-400 transition-colors">Quantum Learning Hub</span>
-                                <span class="text-xs text-slate-500">Comprehensive guide to quantum circuits and statistics.</span>
-                            </a>
-                        </li>
+                    <ul class="space-y-4">
+                        <li><a href="https://qir-alliance.org/" target="_blank" class="text-white hover:text-purple-400 transition-colors block font-bold">QIR Alliance</a></li>
                     </ul>
                 </div>
             </div>
         </section>
-
     </main>
+
+    <footer class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2 opacity-50">
+                <i data-lucide="atom" class="w-5 h-5"></i>
+                <span class="font-bold text-sm tracking-tight">Quantum Frontier 2026</span>
+            </div>
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest">System Version 4.4.0-Restored</p>
+        </div>
+    </footer>
 
     <!-- Glass Modal -->
     <div id="reader-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-6">
@@ -339,7 +334,7 @@
                 </button>
             </div>
             <div class="p-10 overflow-y-auto">
-                <h2 id="modal-title" class="text-3xl font-extrabold mb-6 leading-tight">Article Title</h2>
+                <h2 id="modal-title" class="text-3xl font-extrabold mb-6 leading-tight"></h2>
                 <div id="modal-content" class="text-slate-400 leading-relaxed space-y-6 text-lg font-light"></div>
             </div>
             <div class="p-8 bg-white/5 flex justify-between items-center">
@@ -353,29 +348,16 @@
         </div>
     </div>
 
-    <footer class="py-20 px-6 border-t border-white/5 relative">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-2 opacity-50">
-                <div class="w-6 h-6 bg-white/10 rounded flex items-center justify-center">
-                    <i data-lucide="atom" class="w-4 h-4 text-white"></i>
-                </div>
-                <span class="font-bold text-sm tracking-tight">Quantum Frontier 2026</span>
-            </div>
-            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Digital Research Artifact • System Version 4.1.0-Glass</p>
-        </div>
-    </footer>
-
     <script>
         const articles = [
             {
                 id: 1,
                 category: "Fundamental Physics",
                 title: "Quantum Computing: Foundations & Emerging Applications",
-                summary: "Exposing the core mechanics of superposition and how they scale to enterprise systems.",
+                summary: "Exploring the core mechanics of superposition and how they scale to enterprise systems.",
                 content: `
                     <p>The transition from <strong>Science</strong> to <strong>Computing</strong> occurs the moment we manipulate a quantum state to perform work.</p>
                     <p>Researchers today are moving beyond pure observation. We are now in the 'Control Era,' where high-fidelity gates allow us to maintain coherence long enough to solve real-world optimization problems.</p>
-                    <p>This paper highlights why Entanglement is the most valuable resource in modern computing—enabling a degree of parallelism that is mathematically impossible in a binary environment.</p>
                 `,
                 link: "https://www.frontiersin.org/journals/quantum-science-and-technology"
             },
@@ -385,9 +367,8 @@
                 title: "Harnessing Quantum for Energy Storage",
                 summary: "How quantum simulations are discovering battery chemicals that classical PCs can't model.",
                 content: `
-                    <p>Simulating a single caffeine molecule is difficult for a supercomputer. Simulating complex battery electrolytes is impossible.</p>
-                    <p>By using <strong>Quantum Science</strong>, we can model the electron correlation in these materials perfectly. This isn't just a faster way to compute; it's the <em>only</em> way to compute these specific molecular interactions.</p>
-                    <p>The result: Next-generation solid-state batteries discovered through quantum-first principles.</p>
+                    <p>Simulating complex battery electrolytes is impossible for classical computers.</p>
+                    <p>By using <strong>Quantum Science</strong>, we can model the electron correlation in these materials perfectly. The result: Next-generation solid-state batteries.</p>
                 `,
                 link: "https://www.nature.com/nmat/"
             },
@@ -397,9 +378,7 @@
                 title: "The Rise of Erasure Qubits",
                 summary: "Solving the noise problem by building qubits that identify their own failures.",
                 content: `
-                    <p>2026 has been defined by <strong>Error Mitigation</strong>. A quantum computer is only as good as its correction protocol.</p>
-                    <p>Erasure qubits represent a fundamental shift. Instead of assuming every qubit is functional, these units 'erase' their state and signal the hardware controller when they experience decoherence.</p>
-                    <p>This self-diagnostic capability is what will bridge the gap between experimental labs and production-grade data centers.</p>
+                    <p>2026 has been defined by <strong>Error Mitigation</strong>. Erasure qubits represent a fundamental shift by identifying their own decoherence before it spreads through the system.</p>
                 `,
                 link: "https://arxiv.org/abs/2401.02183"
             }
@@ -417,7 +396,7 @@
                     <p class="text-slate-400 text-sm mb-8 leading-relaxed">${art.summary}</p>
                 </div>
                 <div class="flex items-center gap-2 text-xs font-bold text-white">
-                    DEEP DIVE <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    READ ARTICLE <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </div>
             `;
             grid.appendChild(card);
